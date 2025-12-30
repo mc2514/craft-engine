@@ -13,7 +13,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -21,6 +20,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    
+    # 新增步骤：赋予gradlew可执行权限（核心修复）
+    - name: Grant execute permission to gradlew
+      run: chmod +x ./gradlew
+    
     - name: Set up JDK 17
       uses: actions/setup-java@v4
       with:
